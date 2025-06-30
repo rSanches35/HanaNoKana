@@ -1,0 +1,302 @@
+/* Estilização geral */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    background-color: #feebff;
+    margin: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Esconde o conteúdo até que a imagem seja carregada */
+.hidden {
+    visibility: hidden;
+}
+
+.galho {
+    width: 580px;
+    position: absolute;
+    display: block;
+}
+
+#galho1 {    
+    top: -5px;
+    left: -3px;
+    transform-origin: left center;
+    animation: tiltWind 11s ease-in-out infinite alternate;
+}
+
+#galho2 {
+    top: -25px;
+    left: 0;
+    transform-origin: left center;
+    animation: tiltWind 13s ease-in-out infinite alternate;
+
+    z-index: -10;
+}
+
+#galho3 {
+    top: -30px;
+    left: 0;
+    transform-origin: left center;
+    animation: tiltWind 10s ease-in-out infinite alternate;
+}
+
+#galho4 {
+    top: -12px;
+    right: -90px;
+    transform-origin: right center;
+    animation: tiltWind 8s ease-in-out infinite alternate;
+}
+
+#galho5 {
+    top: -12px;
+    right: -60px;
+    transform-origin: right center;
+    animation: tiltWind 11s ease-in-out infinite alternate;
+
+    z-index: -10;
+}
+
+.pausar-vento {
+  animation-play-state: paused !important;
+}
+
+@keyframes tiltWind {
+  0%   { transform: rotate(0deg); }
+  50%  { transform: rotate(4deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Centraliza o container dos sigilos */
+.container {
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+    border-radius: 30px;
+    width: 580px;
+    height: 500px;
+    background-color: #ffddffcd;
+    margin-bottom: 15px;
+}
+
+/* Estilizando o sigilo como texto */
+.sigilo {
+    user-select: none;
+    font-family: 'Arial', 'Noto Sans JP', sans-serif;
+    font-size: 240px;
+    color: rgb(255, 105, 255);
+    text-align: center;
+    margin-top: -10px;
+    transition: color 0.3s ease-in-out;
+}
+
+.sigilo-yoon {
+  transform: scale(0.8);
+  font-weight: 500;
+}
+
+.brilho {
+    animation: glow 1.5s ease-in-out;
+}
+
+@keyframes glow {
+    0% {text-shadow: 0 0 3px rgba(255, 37, 240, 0.4), 0 0 6px rgba(255, 37, 240, 0.3);}
+    25% {text-shadow: 0 0 10px rgba(255, 37, 240, 0.7), 0 0 20px rgba(255, 37, 240, 0.5);}
+    88% {text-shadow: 0 0 3px rgba(255, 37, 240, 0.4), 0 0 6px rgba(255, 37, 240, 0.3);}
+}
+
+/* Efeito ao acertar */
+.sigilo-correto {
+    color: rgb(255, 206, 252);
+}
+
+@keyframes tilt {
+    0% { transform: translateX(0); }
+    30% { transform: translateX(-3px); }
+    45% { transform: translateX(3px); }
+    60% { transform: translateX(-3px); }
+    60% { transform: translateX(3px); }
+    70% { transform: translateX(-3px); }
+    80% { transform: translateX(0); }
+    90% { transform: translateX(0); }
+    100% { transform: translateX(0); }
+}
+
+/* Efeito ao errar */
+.sigilo-incorreto {
+    color: rgb(225, 71, 225);
+    animation: tilt 0.2s ease-in-out 3;
+}
+
+/* Estilização do input */
+input {
+    margin-top: 0px;
+    padding: 10px;
+    width: 195px;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: rgb(189, 44, 189);
+    border-radius: 6px;
+    border: 2px solid transparent;
+    background-color: #fdc6ff70;
+    border: 2px solid rgb(255, 168, 255);
+    text-align: center;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Efeito ao focar no input */
+input:focus {
+    outline: none;
+    border: rgb(255, 105, 255) 2px solid;
+}
+
+input::placeholder {
+  color: rgb(255, 105, 255);
+  text-transform: none;
+}
+
+@keyframes fadeSlide {
+    0% {
+        opacity: 0;
+        transform: translateX(10px); /* Vem da direita */
+    }
+    100% {
+        opacity: 0.75;
+        transform: translateX(0); /* Chega na posição certa */
+    }
+}
+
+
+/* Estilização dos botões */
+.botoes {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.botoes button {
+    padding: 10px 20px;
+    background-color: #feebffbe;
+    color: rgb(255, 105, 255);
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 2px solid rgb(255, 168, 255);
+    transition: background-color 0.3s ease-in-out, transform 0.1s;
+}
+
+/* Efeito de hover nos botões */
+.botoes button:hover {
+    background-color: #ffdcffcd;
+    transform: scale(1.05);
+}
+
+.botao-selecionado {
+    background-color: rgba(255, 105, 255, 0.841) !important;
+    border: 2px solid rgba(255, 168, 255, 0) !important;
+    color: #FFF !important;
+}
+
+.botao-selecionado:hover {
+    background-color: rgba(255, 55, 255, 0.841) !important;
+    transform: scale(1) !important;
+}
+
+/* Estilo do ícone de volume */
+.config {
+    display: flex;
+    position: fixed;
+    bottom: 5px;
+    right: 15px;
+}
+
+.icone {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    margin-left: 15px;
+}
+
+.icone:hover {
+    transform: scale(1.1);
+}
+
+/* Container animado do menu */
+#menuAnimado {
+    position: absolute;
+    bottom: 20px;
+    left: 136px;
+    border: 2px solid rgba(255, 105, 255, 1);
+    border-radius: 7px;
+    overflow: hidden;
+    width: 0;
+    height: 2px;
+}
+
+/* Quando aberto, ele cresce para direita e depois para cima */
+#menuAnimado.aberto {
+    width: 155px;
+    height: 320px;
+    transition: width 0.2s ease-out, height 0.3s ease-out 0.3s;
+}
+
+#menuAnimado.fechado {
+  width: 0;
+  height: 2px;
+  transition: height 0.15s ease-in, width 0.2s ease-in 0.2s;
+}
+
+#menuAnimado button.menu-kana {
+  width: 100%;
+  height: 80px;
+  padding: 12px;
+  background-color: #feebffbe;
+  color: rgb(255, 105, 255);
+  border: none;
+  border-bottom: 1px solid rgb(255, 168, 255);
+  font-size: 28px;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-align: center;
+  font-weight: 750;
+}
+
+#menuAnimado button.menu-kana span {
+  display: block;
+  font-size: 12px;
+  margin-top: 0px;
+  color: rgb(255, 88, 255);
+  font-weight: 550;
+}
+
+#menuAnimado button.menu-kana:last-child {
+  border-bottom: none;
+}
+
+#menuAnimado button.menu-kana:hover {
+  background-color: #ffd9ff;
+}
+
+.categoria-selecionada {
+    background-color: rgba(255, 105, 255, 0.841) !important;
+    color: #FFF !important;
+}
+
+.categoria-selecionada span {
+    color: #FFF !important;
+}
+
+.categoria-selecionada:hover {
+    background-color: rgba(255, 55, 255, 0.841) !important;
+}

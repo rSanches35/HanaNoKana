@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hana no Kana</title>
+
+  <link rel="icon" type="image/png" href="favicon.ico">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    #background-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body class="hidden">
+
+  <canvas id="background-canvas"></canvas>
+
+  <img id="galho2" class="galho" src="imagens/galho2.png" alt="GalhoCerejeira2">
+  <img id="galho1" class="galho" src="imagens/galho1.png" alt="GalhoCerejeira1">
+  <img id="galho3" class="galho" src="imagens/galho3.png" alt="GalhoCerejeira3">
+
+  <img id="galho5" class="galho" src="imagens/galho5.png" alt="GalhoCerejeira5">
+  <img id="galho4" class="galho" src="imagens/galho4.png" alt="GalhoCerejeira4">
+
+  <div class="container">
+    <div id="sigiloAleatorio" class="sigilo"></div>
+    <input type="text" placeholder="Hiragana...">
+  </div>
+
+  <div class="botoes">
+    <!-- <button data-tipo="katakana">Katanana</button> -->
+    <button data-tipo="hiragana" id="btnHiragana">Hiragana</button>
+  </div>
+
+  <div class="config">
+    <div id="controleAnimacao" class="controle-icons">
+      <img src="imagens/animacaoOn.png" alt="Animação" id="iconeAnimacao" class="icone"/>
+    </div>
+    <div id="controleVolume" class="controle-icons">
+      <img src="imagens/volumeOn.png" alt="Volume" id="iconeVolume" class="icone"/>
+    </div>
+  </div>
+
+  <!-- PIXI.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.5.2/browser/pixi.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+  function abrirMenuHiragana() {
+    const menu = document.getElementById("menuHiragana");
+    menu.classList.toggle("aberto");
+  }
+  </script>
+</body>
+</html>
