@@ -11,6 +11,16 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* Regra adicional para garantir bloqueio de scroll em dispositivos móveis */
+@media (max-width: 768px) {
+    html {
+        overflow: hidden !important;
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+    }
+}
+
 /* Esconde o conteúdo até que a imagem seja carregada */
 .hidden {
     visibility: hidden;
@@ -81,6 +91,10 @@ body {
     height: 500px;
     background-color: #ffddffcd;
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Estilizando o sigilo como texto */
@@ -89,14 +103,14 @@ body {
     font-family: 'Arial', 'Noto Sans JP', sans-serif;
     font-size: 240px;
     color: rgb(255, 105, 255);
-    text-align: center;
-    margin-top: -10px;
     transition: color 0.3s ease-in-out;
+    white-space: nowrap;
 }
 
 .sigilo-yoon {
-  transform: scale(0.8);
+  transform: scale(0.85);
   font-weight: 500;
+  transform-origin: center center;
 }
 
 .brilho {
@@ -135,6 +149,7 @@ body {
 /* Estilização do input */
 input {
     margin-top: 0px;
+    margin-bottom: 70px;
     padding: 10px;
     width: 195px;
     font-size: 16px;
@@ -263,7 +278,7 @@ input::placeholder {
   background-color: #feebffbe;
   color: rgb(255, 105, 255);
   border: none;
-  border-bottom: 1px solid rgb(255, 168, 255);
+  border-bottom: 2px solid rgb(255, 168, 255);
   font-size: 28px;
   font-family: 'Noto Sans JP', sans-serif;
   cursor: pointer;
@@ -299,4 +314,545 @@ input::placeholder {
 
 .categoria-selecionada:hover {
     background-color: rgba(255, 55, 255, 0.841) !important;
+}
+
+/* Menu do Katakana posicionado à direita do botão Katakana */
+#menuAnimadoKatakana {
+    position: absolute;
+    bottom: 70px;
+    left: 136px;
+    border: 2px solid rgba(255, 105, 255, 1);
+    border-radius: 7px;
+    overflow: hidden;
+    width: 0;
+    height: 2px;
+}
+
+/* Quando aberto, o menu Katakana cresce para esquerda e depois para cima */
+#menuAnimadoKatakana.aberto {
+    width: 155px;
+    height: 320px;
+    transition: width 0.2s ease-out, height 0.3s ease-out 0.3s;
+}
+
+#menuAnimadoKatakana.fechado {
+  width: 0;
+  height: 2px;
+  transition: height 0.15s ease-in, width 0.2s ease-in 0.2s;
+}
+
+#menuAnimadoKatakana button.menu-kana {
+  width: 100%;
+  height: 80px;
+  padding: 12px;
+  background-color: #feebffbe;
+  color: rgb(255, 105, 255);
+  border: none;
+  border-bottom: 2px solid rgb(255, 168, 255);
+  font-size: 28px;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-align: center;
+  font-weight: 750;
+}
+
+#menuAnimadoKatakana button.menu-kana span {
+  display: block;
+  font-size: 12px;
+  margin-top: 0px;
+  color: rgb(255, 88, 255);
+  font-weight: 550;
+}
+
+#menuAnimadoKatakana button.menu-kana:last-child {
+  border-bottom: none;
+}
+
+#menuAnimadoKatakana button.menu-kana:hover {
+  background-color: #ffd9ff;
+}
+
+/* Media queries para centralizar o container verticalmente na versão mobile */
+@media (max-width: 768px) {
+    .container {
+        margin-top: auto;
+        margin-bottom: auto;
+        position: absolute;
+        top: 45%;
+        transform: translateY(-50%);
+    }
+}
+
+@media (max-width: 640px) {
+    .container {
+        margin-top: auto;
+        margin-bottom: auto;
+        position: absolute;
+        top: 45%;
+        transform: translateY(-50%);
+    }
+}
+
+@media (max-width: 580px) {
+    .container {
+        margin-top: auto;
+        margin-bottom: auto;
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Versão Mobile - Ocultar elementos e bloquear scroll */
+@media (max-width: 768px) {
+    /* Remover efeito hover do botão hamburger especificamente */
+    .botao-hamburger:hover {
+        background-color: #ff69ff !important;
+        transform: scale(1) !important;
+        box-shadow: 0 4px 12px rgba(255, 105, 255, 0.4) !important;
+    }
+    
+    /* Remover efeito hover dos ícones especificamente */
+    .icone:hover {
+        transform: none !important;
+        scale: none !important;
+    }
+    
+    /* Ocultar botões Hiragana e Katakana */
+    .botoes {
+        display: none !important;
+    }
+    
+    /* Ocultar botões de som e animação - abordagem mais agressiva */
+    .config {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+    }
+    
+    /* Mostrar botão hamburger */
+    .botao-hamburger {
+        display: flex !important;
+    }
+    
+    /* Ajustar escala dos Yoons no mobile */
+    .sigilo-yoon {
+        transform: scale(0.64) !important;
+        transform-origin: center center !important;
+    }
+    
+    /* Remover apenas efeitos de toque indesejados no mobile */
+    * {
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        user-select: none !important;
+    }
+    
+    /* Bloquear scroll completamente no mobile */
+    html, body {
+        overflow: hidden !important;
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        overscroll-behavior: none !important;
+        touch-action: none !important;
+        -webkit-overflow-scrolling: auto !important;
+    }
+    
+    /* Garantir que o bloqueio funcione mesmo com problemas no menu */
+    * {
+        overscroll-behavior: none !important;
+        scroll-behavior: auto !important;
+        -webkit-overflow-scrolling: auto !important;
+    }
+    
+    /* Garantir que nenhum elemento cause overflow */
+    .container, .galho, .botao-hamburger, .menu-mobile {
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        box-sizing: border-box !important;
+    }
+}
+
+/* Botão Hamburger Mobile */
+.botao-hamburger {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    left: 0px;
+    width: 50px;
+    height: 50px;
+    background-color: #ff69ff;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0 4px 12px rgba(255, 105, 255, 0.4);
+    transition: all 0.3s ease;
+    z-index: 2001;
+}
+
+.botao-hamburger:hover {
+    background-color: #e555e5;
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(255, 105, 255, 0.6);
+}
+
+.botao-hamburger .linha {
+    width: 20px;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Transformar hamburger em X quando menu estiver aberto */
+.botao-hamburger.ativo .linha:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.botao-hamburger.ativo .linha:nth-child(2) {
+    opacity: 0;
+}
+
+.botao-hamburger.ativo .linha:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menu Mobile Fullscreen */
+.menu-mobile {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #feebff;
+    border-left: 7px solid #ff69ff;
+    z-index: 2000;
+    padding: 80px 20px 40px 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    clip-path: circle(0px at 25px calc(100vh - 75px));
+}
+
+.menu-mobile.ativo {
+    display: flex;
+}
+
+/* Título do menu mobile */
+.menu-titulo {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.menu-titulo h2 {
+    color: #ff69ff;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.linha-separadora {
+    width: 80%;
+    height: 2px;
+    background-color: #ff69ff;
+    margin: 0 auto;
+}
+
+.menu-mobile.abrindo {
+    animation: expandirCirculo 0.65s ease-out 0.0001s forwards;
+}
+
+/* Elemento separado para borda do círculo */
+.borda-circulo {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ff69ff;
+    z-index: 1999;
+    pointer-events: none;
+    clip-path: circle(0px at 25px calc(100vh - 75px));
+}
+
+.borda-circulo.ativo {
+    display: block;
+    animation: expandirBordaCirculo 0.65s ease-out forwards;
+}
+
+.borda-circulo.fechando {
+    display: block;
+    animation: contrairBordaCirculo 0.35s ease-in 0.05s forwards;
+}
+
+/* Background temporário para fechamento */
+.background-fechamento {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ff69ff;
+    z-index: 1998;
+    pointer-events: none;
+}
+
+.background-fechamento.ativo {
+    display: block;
+}
+
+.menu-mobile.fechando {
+    animation: contrairCirculo 0.35s ease-in forwards;
+}
+
+/* Animação de expansão do círculo */
+@keyframes expandirCirculo {
+    0% {
+        clip-path: circle(0px at 25px calc(100vh - 75px));
+    }
+    100% {
+        clip-path: circle(150vh at 25px calc(100vh - 75px));
+    }
+}
+
+/* Animação da borda do círculo (rosa escuro) */
+@keyframes expandirBordaCirculo {
+    0% {
+        clip-path: circle(0px at 25px calc(100vh - 75px));
+    }
+    100% {
+        clip-path: circle(150vh at 25px calc(100vh - 75px));
+    }
+}
+
+/* Animação de contração da borda do círculo */
+@keyframes contrairBordaCirculo {
+    0% {
+        clip-path: circle(150vh at 25px calc(100vh - 75px));
+    }
+    100% {
+        clip-path: circle(0px at 25px calc(100vh - 75px));
+    }
+}
+
+/* Animação da borda do círculo */
+@keyframes expandirBorda {
+    0% {
+        clip-path: circle(0px at 25px calc(100vh - 75px));
+        opacity: 1;
+    }
+    95% {
+        clip-path: circle(150vh at 25px calc(100vh - 75px));
+        opacity: 1;
+    }
+    100% {
+        clip-path: circle(150vh at 25px calc(100vh - 75px));
+        opacity: 0;
+    }
+}
+
+/* Animação de contração do círculo */
+@keyframes contrairCirculo {
+    0% {
+        clip-path: circle(150vh at 25px calc(100vh - 75px));
+    }
+    100% {
+        clip-path: circle(0px at 25px calc(100vh - 75px));
+    }
+}
+
+/* Conteúdo do menu com fade-in */
+.menu-mobile > * {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.menu-mobile.ativo > * {
+    animation: fadeInContent 0.3s ease-out 0.39s forwards;
+}
+
+@keyframes fadeInContent {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Configurações no canto inferior direito */
+.config-mobile {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.controle-mobile {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: none;
+}
+
+/* .controle-mobile:hover removido */
+
+.controle-mobile .icone {
+    width: 40px;
+    height: 40px;
+}
+
+/* Botões Hiragana/Katakana */
+.tipo-botoes {
+    display: flex;
+    gap: 0px;
+    margin-bottom: 20px;
+    margin-top: -60px;
+    width: 300px;
+}
+
+.tipo-btn {
+    padding: 12px 30px;
+    border: 3px solid #ff69ff;
+    background-color: transparent;
+    color: #ff69ff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: none;
+    flex: 1;
+}
+
+.tipo-btn:first-child {
+    border-radius: 15px 0 0 15px;
+    border-right: 1.5px solid #ff69ff;
+}
+
+.tipo-btn:last-child {
+    border-radius: 0 15px 15px 0;
+    border-left: 1.5px solid #ff69ff;
+}
+
+.tipo-btn.active {
+    background-color: #ff69ff;
+    color: white;
+}
+
+/* .tipo-btn:hover removido */
+
+/* Grid 2x2 das categorias */
+.grid-categorias {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0px;
+    width: 300px;
+    margin-bottom: 120px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 3px solid #ff69ff;
+}
+
+.categoria-btn {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 0px;
+    padding: 15px 10px;
+    cursor: pointer;
+    transition: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    height: 120px;
+    width: 150px;
+    border-right: 3px solid #ff69ff;
+    border-bottom: 3px solid #ff69ff;
+}
+
+/* Remover bordas dos botões nas extremidades da grid */
+.categoria-btn:nth-child(2),
+.categoria-btn:nth-child(4) {
+    border-right: none;
+}
+
+.categoria-btn:nth-child(3),
+.categoria-btn:nth-child(4) {
+    border-bottom: none;
+}
+
+/* .categoria-btn:hover removido */
+
+.kana-exemplo {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ff69ff;
+    transition: none;
+}
+
+/* .categoria-btn:hover .kana-exemplo removido */
+
+.categoria-nome {
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    color: #ff69ff;
+    transition: none;
+    line-height: 1.1;
+    max-width: 100%;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .categoria-btn:hover .categoria-nome removido */
+
+/* Categoria selecionada no mobile */
+.categoria-btn.selecionada {
+    background-color: #ff69ff;
+    border: 3px solid #ff69ff;
+}
+
+.categoria-btn.selecionada .kana-exemplo {
+    color: white;
+}
+
+.categoria-btn.selecionada .categoria-nome {
+    color: white;
 }

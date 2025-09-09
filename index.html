@@ -31,13 +31,74 @@
 
   <div class="container">
     <div id="sigiloAleatorio" class="sigilo"></div>
-    <input type="text" placeholder="Hiragana...">
+    <input type="text" placeholder="Romaji...">
   </div>
 
   <div class="botoes">
-    <!-- <button data-tipo="katakana">Katanana</button> -->
+    <button data-tipo="katakana" id="btnKatakana">Katakana</button>
     <button data-tipo="hiragana" id="btnHiragana">Hiragana</button>
   </div>
+
+  <!-- Botão hamburger para mobile -->
+  <button class="botao-hamburger" id="botaoHamburger">
+    <div class="linha"></div>
+    <div class="linha"></div>
+    <div class="linha"></div>
+  </button>
+
+  <!-- Menu mobile fullscreen -->
+  <div class="menu-mobile" id="menuMobile">
+    <!-- Título do menu -->
+    <div class="menu-titulo">
+      <h2>OPÇÕES</h2>
+      <div class="linha-separadora"></div>
+    </div>
+
+    <!-- Botões de configuração (som e animação) -->
+    <div class="config-mobile">
+      <div class="controle-mobile" id="controleAnimacaoMobile">
+        <img src="imagens/animacaoOn.png" alt="Animação" id="iconeAnimacaoMobile" class="icone"/>
+      </div>
+      <div class="controle-mobile" id="controleVolumeMobile">
+        <img src="imagens/volumeOn.png" alt="Volume" id="iconeVolumeMobile" class="icone"/>
+      </div>
+    </div>
+
+    <!-- Botões Hiragana/Katakana -->
+    <div class="tipo-botoes">
+      <button class="tipo-btn active" id="btnHiraganaMobile" data-tipo="hiragana">Hiragana</button>
+      <button class="tipo-btn" id="btnKatakanaMobile" data-tipo="katakana">Katakana</button>
+    </div>
+
+    <!-- Grid 2x2 das categorias -->
+    <div class="grid-categorias">
+      <button class="categoria-btn" data-categoria="seion">
+        <div class="kana-exemplo" id="exemploSeion">あ</div>
+        <div class="categoria-nome">Seion</div>
+      </button>
+      
+      <button class="categoria-btn" data-categoria="dakuon">
+        <div class="kana-exemplo" id="exemploDakuon">が</div>
+        <div class="categoria-nome">Dakuon / Handakuon</div>
+      </button>
+      
+      <button class="categoria-btn" data-categoria="yoon">
+        <div class="kana-exemplo" id="exemploYoon">きゃ</div>
+        <div class="categoria-nome">Yoon</div>
+      </button>
+      
+      <button class="categoria-btn" data-categoria="completo">
+        <div class="kana-exemplo" id="exemploCompleto">ゆ</div>
+        <div class="categoria-nome">Completo</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Borda do círculo expansivo -->
+  <div class="borda-circulo" id="bordaCirculo"></div>
+
+  <!-- Background temporário para fechamento -->
+  <div class="background-fechamento" id="backgroundFechamento"></div>
 
   <div class="config">
     <div id="controleAnimacao" class="controle-icons">
